@@ -11,14 +11,16 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.fetch.compose.home.HomeScreen
-import com.example.fetch.compose.imagedetail.ImageDetailScreen
-import com.example.fetch.compose.imagelist.ImageListScreen
+import com.example.fetch.compose.photodetail.ImageDetailScreen
+import com.example.fetch.compose.photolist.ImageListScreen
 import com.example.fetch.navigation.NavigationItem
-import com.example.fetch.repository.ImageRepositoryImplementation
+import com.example.fetch.repository.PhotoRepositoryImplementation
 import com.example.fetch.ui.theme.FetchTheme
 import com.example.fetch.viewmodels.PhotoViewModel
 
 class MainActivity : ComponentActivity() {
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
@@ -32,8 +34,7 @@ class MainActivity : ComponentActivity() {
     fun NavGraph(
         navController: NavHostController = rememberNavController()
     ) {
-        val viewModel = PhotoViewModel(ImageRepositoryImplementation())
-
+        val viewModel = PhotoViewModel(PhotoRepositoryImplementation())
         NavHost(
             navController = navController,
             startDestination = NavigationItem.ImageList.route
@@ -42,7 +43,9 @@ class MainActivity : ComponentActivity() {
                 HomeScreen()//bottom bar
             }
             composable(NavigationItem.ImageList.route) {
-                ImageListScreen(viewModel = viewModel) { photo ->
+                ImageListScreen(
+                    viewModel = viewModel,
+                ) { photo ->
                     navController.navigate("${NavigationItem.ImageDetail.route}/${photo.id}")
                 }
             }

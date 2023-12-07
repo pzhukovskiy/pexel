@@ -1,4 +1,4 @@
-package com.example.fetch.compose.imagelist
+package com.example.fetch.compose.photolist
 
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -13,16 +13,11 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
-import androidx.navigation.NavController
 import coil.compose.AsyncImage
 import com.example.fetch.data.Photo
 import com.example.fetch.viewmodels.PhotoViewModel
@@ -39,7 +34,9 @@ fun ImageListScreen(
 
     Scaffold { paddingValues ->
         if (viewModel.errorMessage.isBlank()) {
-            Column(modifier = Modifier.padding(paddingValues).fillMaxSize(),
+            Column(modifier = Modifier
+                .padding(paddingValues)
+                .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {

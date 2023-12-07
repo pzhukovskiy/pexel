@@ -1,4 +1,4 @@
-package com.example.fetch.compose.imagedetail
+package com.example.fetch.compose.photodetail
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

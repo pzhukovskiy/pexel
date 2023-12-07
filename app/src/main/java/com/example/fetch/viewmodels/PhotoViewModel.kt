@@ -7,12 +7,14 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.fetch.data.Photo
-import com.example.fetch.repository.ImageRepository
+import com.example.fetch.repository.PhotoRepository
 import kotlinx.coroutines.Job
-import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 
-class PhotoViewModel(private val imageRepository: ImageRepository): ViewModel() {
+class PhotoViewModel(
+    private val imageRepository: PhotoRepository,
+): ViewModel() {
+
     private val _photos = mutableStateListOf<Photo>()
     var errorMessage: String by mutableStateOf("")
     val photoList: List<Photo>
