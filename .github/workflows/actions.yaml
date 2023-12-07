@@ -1,9 +1,11 @@
 name: actions
 on:
   push:
-    branches: ["main"]
+    branches: 
+      - main
   pull_requets:
-    branches: ["main"]
+    branches: 
+      - main
 
 jobs:
   build_job:
