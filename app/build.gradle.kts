@@ -53,7 +53,7 @@ android {
 dependencies {
     //json
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
-    implementation("com.squareup.retrofit2:converter-gson:2.0.0")
+    implementation("com.squareup.retrofit2:converter-gson:2.9.0")
 
     //image
     implementation("io.coil-kt:coil-compose:2.4.0")
@@ -86,4 +86,7 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
+
+    //splash
+    implementation("androidx.core:core-splashscreen:1.0.0-beta01")
 }

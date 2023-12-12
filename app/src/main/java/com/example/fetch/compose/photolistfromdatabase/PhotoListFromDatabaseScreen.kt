@@ -1,7 +1,6 @@
 package com.example.fetch.compose.photolistfromdatabase
 
 import android.widget.Toast
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -32,10 +31,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import coil.compose.AsyncImage
 import com.example.fetch.database.event.PhotoEvent
 import com.example.fetch.database.state.PhotoState
 import com.example.fetch.utilities.BottomBarItem
@@ -60,47 +57,40 @@ fun PhotoListFromDatabaseScreen(
             Box(modifier = Modifier.padding(paddingValues)) {
                 LazyColumn(content = {
                     items(state.photos) { photo ->
-                        if (state.photos.isEmpty()) {
-                            Column {
-                                Text(text = "Save photo")
-                            }
-                        }
-                        else {
-                            Column {
-                                Row(
+                        Column {
+                            Row(
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(8.dp)
+                            ) {
+                                Box(
                                     modifier = Modifier
+                                        .height(70.dp)
                                         .fillMaxWidth()
-                                        .padding(8.dp)
+                                        .background(Color.LightGray)
                                 ) {
-                                    Box(
+                                    Row(
                                         modifier = Modifier
-                                            .height(70.dp)
                                             .fillMaxWidth()
-                                            .background(Color.LightGray)
+                                            .padding(8.dp),
+                                        horizontalArrangement = Arrangement.SpaceBetween,
+                                        verticalAlignment = Alignment.CenterVertically
                                     ) {
-                                        Row(
-                                            modifier = Modifier
-                                                .fillMaxWidth()
-                                                .padding(8.dp),
-                                            horizontalArrangement = Arrangement.SpaceBetween,
-                                            verticalAlignment = Alignment.CenterVertically
-                                        ) {
-                                            Text(text = photo.photographer)
-                                            IconButton(onClick = {
-                                                try {
-                                                    Toast.makeText(context, "Photo deleted successful", Toast.LENGTH_SHORT).show()
-                                                }
-                                                catch (e: Exception) {
-                                                    Toast.makeText(context, "Error delete photo", Toast.LENGTH_SHORT).show()
-                                                    throw e
-                                                }
-                                                onEvent(PhotoEvent.DeletePhoto(photo))
-                                            }) {
-                                                Icon(
-                                                    imageVector = Icons.Default.Delete,
-                                                    contentDescription = "Delete photo"
-                                                )
+                                        Text(text = photo.photographer)
+                                        IconButton(onClick = {
+                                            try {
+                                                Toast.makeText(context, "Photo deleted successful", Toast.LENGTH_SHORT).show()
                                             }
+                                            catch (e: Exception) {
+                                                Toast.makeText(context, "Error delete photo", Toast.LENGTH_SHORT).show()
+                                                throw e
+                                            }
+                                            onEvent(PhotoEvent.DeletePhoto(photo))
+                                        }) {
+                                            Icon(
+                                                imageVector = Icons.Default.Delete,
+                                                contentDescription = "Delete photo"
+                                            )
                                         }
                                     }
                                 }

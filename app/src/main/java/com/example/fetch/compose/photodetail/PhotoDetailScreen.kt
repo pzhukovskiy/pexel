@@ -88,7 +88,7 @@ fun PhotoDetailScreen(
                     }
                     Box(
                         modifier = Modifier
-                            .padding(top = 140.dp)
+                            .padding(top = 160.dp)
                     ) {
                         Column {
                             Text(
