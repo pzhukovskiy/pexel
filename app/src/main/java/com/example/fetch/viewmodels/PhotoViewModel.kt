@@ -161,9 +161,13 @@ class PhotoViewModel(
     }
 
     private val _photos = mutableStateListOf<Photo>()
+    private var _filteredPhotoList: List<Photo> by mutableStateOf(_photos)
     var errorMessage: String by mutableStateOf("")
     val photoList: List<Photo>
         get() = _photos
+
+    val filteredPhotoList: List<Photo>
+        get() = _filteredPhotoList
 
     private val job: Job = viewModelScope.launch {
         imageRepository.fetchPhotos().collect {photos ->
@@ -175,6 +179,14 @@ class PhotoViewModel(
     override fun onCleared() {
         job.cancel()
         super.onCleared()
+    }
+
+    fun filterPhotosByPhotographer(query: String) {
+        _filteredPhotoList = if (query.isNotBlank()) {
+            photoList.filter { it.photographer.contains(query, ignoreCase = true) }
+        } else {
+            photoList
+        }
     }
 
     fun getPhoto(): List<Photo> {
