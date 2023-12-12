@@ -82,7 +82,7 @@ fun PhotoListFromDatabaseScreen(
                                                 Toast.makeText(context, "Photo deleted successful", Toast.LENGTH_SHORT).show()
                                             }
                                             catch (e: Exception) {
-                                                Toast.makeText(context, "Error delete photo", Toast.LENGTH_SHORT).show()
+                                                Toast.makeText(context, "Error deleted photo", Toast.LENGTH_SHORT).show()
                                                 throw e
                                             }
                                             onEvent(PhotoEvent.DeletePhoto(photo))

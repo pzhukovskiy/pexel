@@ -101,9 +101,9 @@ fun PhotoDetailScreen(
                             Button(onClick = {
                                 try {
                                     onEvent(PhotoEvent.SavePhoto)
-                                    Toast.makeText(context, "Photo save successful", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context, "Photo saved successful", Toast.LENGTH_SHORT).show()
                                 } catch (e: Exception) {
-                                    Toast.makeText(context, "Error downloading photo", Toast.LENGTH_SHORT).show()
+                                    Toast.makeText(context, "Error downloaded photo", Toast.LENGTH_SHORT).show()
                                     throw e
                                 }
                             }) {
