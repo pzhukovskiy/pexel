@@ -31,7 +31,6 @@ fun PhotoListScreen(
     viewModel: PhotoViewModel,
     onImageClick: (Photo) -> Unit,
 ) {
-    // State to hold the search query
     var query by remember { mutableStateOf("") }
 
     LaunchedEffect(key1 = Unit, block = {
